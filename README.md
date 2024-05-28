@@ -1,5 +1,10 @@
 # Installing-Tools
 
+**Install Python**
+
+sudo apt install python3-pip
+
+
 **Set up Docker on the EC2 instance:**
 
 
