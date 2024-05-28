@@ -2,6 +2,7 @@
 
 **Set up Docker on the EC2 instance:**
 
+
 sudo apt-get update
 
 sudo apt-get install docker.io -y
@@ -12,38 +13,65 @@ newgrp docker
 
 sudo chmod 777 /var/run/docker.sock
 
+
 **Install Kubectl:**
 
+
 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.11/2023-03-17/bin/linux/amd64/kubectl
+
 chmod +x ./kubectl
+
 sudo cp ./kubectl /usr/local/bin
+
 export PATH=/usr/local/bin:$PATH
+
 
 **Install AWScli:**
 
+
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
 unzip awscliv2.zip
+
 sudo ./aws/install
+
 
 **Install Jenkins on the EC2 instance**
 
+
 sudo apt update
+
 sudo apt install fontconfig openjdk-17-jre
+
 java -version
+
 openjdk version "17.0.8" 2023-07-18
+
 OpenJDK Runtime Environment (build 17.0.8+7-Debian-1deb12u1)
+
 OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
 
+
 #jenkins
+
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+
 https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+
 https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+
 /etc/apt/sources.list.d/jenkins.list > /dev/null
+
 sudo apt-get update
+
 sudo apt-get install jenkins
+
 sudo systemctl start jenkins
+
 sudo systemctl enable jenkins
+
 
 **To install Trivy:**
 
